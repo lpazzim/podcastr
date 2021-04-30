@@ -1,0 +1,1 @@
+{"ast":null,"code":"import axios from 'axios';\nexport const api = axios.create({\n  baseURL: 'http://localhost:3333/'\n});","map":null,"metadata":{},"sourceType":"module"}
