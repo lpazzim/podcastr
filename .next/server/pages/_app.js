@@ -1,466 +1,34 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = require('../ssr-module-cache.js');
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		var threw = true;
-/******/ 		try {
-/******/ 			modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 			threw = false;
-/******/ 		} finally {
-/******/ 			if(threw) delete installedModules[moduleId];
-/******/ 		}
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ({
+(function() {
+var exports = {};
+exports.id = 888;
+exports.ids = [888];
+exports.modules = {
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("hUgY");
-
-
-/***/ }),
-
-/***/ "0G5g":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 6255:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
+var __webpack_unused_export__;
 
 
-exports.__esModule = true;
-exports.cancelIdleCallback = exports.requestIdleCallback = void 0;
+var _interopRequireDefault = __webpack_require__(2426);
 
-const requestIdleCallback = typeof self !== 'undefined' && self.requestIdleCallback || function (cb) {
-  let start = Date.now();
-  return setTimeout(function () {
-    cb({
-      didTimeout: false,
-      timeRemaining: function () {
-        return Math.max(0, 50 - (Date.now() - start));
-      }
-    });
-  }, 1);
-};
-
-exports.requestIdleCallback = requestIdleCallback;
-
-const cancelIdleCallback = typeof self !== 'undefined' && self.cancelIdleCallback || function (id) {
-  return clearTimeout(id);
-};
-
-exports.cancelIdleCallback = cancelIdleCallback;
-
-/***/ }),
-
-/***/ "1ccW":
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-
-/***/ }),
-
-/***/ "7UUK":
-/***/ (function(module, exports) {
-
-module.exports = require("next/dist/next-server/lib/to-base-64.js");
-
-/***/ }),
-
-/***/ "98FW":
-/***/ (function(module, exports) {
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-module.exports = _objectWithoutPropertiesLoose;
-
-/***/ }),
-
-/***/ "ANQk":
-/***/ (function(module, exports) {
-
-module.exports = require("next/dist/next-server/server/image-config.js");
-
-/***/ }),
-
-/***/ "Aiso":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("dQHF")
-
-
-/***/ }),
-
-/***/ "AroE":
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ "BLsd":
-/***/ (function(module, exports) {
-
-// Exports
-module.exports = {
-	"playerContainer": "styles_playerContainer__2kTpC",
-	"empty": "styles_empty__XvMyC",
-	"progress": "styles_progress__ULW9V",
-	"currentEpisode": "styles_currentEpisode__3Qmiu",
-	"emptyPlayer": "styles_emptyPlayer__WHPi6",
-	"slider": "styles_slider__3_Mkb",
-	"emptySlider": "styles_emptySlider__3p9Ad",
-	"buttons": "styles_buttons__i4fo8",
-	"isActive": "styles_isActive__PGy6l",
-	"playButton": "styles_playButton__fmvI6"
-};
-
-
-/***/ }),
-
-/***/ "F3KW":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export PlayerContext */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerContextProvider; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return usePlayer; });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("F5FC");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-const PlayerContext = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])({});
-function PlayerContextProvider({
-  children
-}) {
-  const {
-    0: episodeList,
-    1: setEpisodeList
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]);
-  const {
-    0: currentEpisodeIndex,
-    1: setCurrentEpisodeIndex
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0);
-  const {
-    0: isPlaying,
-    1: setIsPlaying
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-  const {
-    0: isLooping,
-    1: setIsLooping
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-  const {
-    0: isShuffling,
-    1: setIsShuffling
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-
-  function play(episode) {
-    setEpisodeList([episode]);
-    setCurrentEpisodeIndex(0);
-    setIsPlaying(true);
-  }
-
-  function playList(list, index) {
-    setEpisodeList(list);
-    setCurrentEpisodeIndex(index);
-    setIsPlaying(true);
-  }
-
-  const hasPrevious = currentEpisodeIndex > 0;
-  const hasNext = isShuffling || currentEpisodeIndex + 1 < episodeList.length;
-
-  function playNext() {
-    if (isShuffling) {
-      const nextRendomEpisodeIndex = Math.floor(Math.random() * episodeList.length);
-      setCurrentEpisodeIndex(nextRendomEpisodeIndex);
-    } else if (hasNext) {
-      setCurrentEpisodeIndex(currentEpisodeIndex + 1);
-    }
-  }
-
-  function playPrevious() {
-    if (hasPrevious) {
-      setCurrentEpisodeIndex(currentEpisodeIndex - 1);
-    }
-  }
-
-  function togglePlay() {
-    setIsPlaying(!isPlaying);
-  }
-
-  function toggleLoop() {
-    setIsLooping(!isLooping);
-  }
-
-  function toggleShuffle() {
-    setIsShuffling(!isShuffling);
-  }
-
-  function setPlayingState(state) {
-    setIsPlaying(state);
-  }
-
-  function clearPlayerState() {
-    setEpisodeList([]);
-    setCurrentEpisodeIndex(0);
-  }
-
-  return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(PlayerContext.Provider, {
-    value: {
-      episodeList,
-      currentEpisodeIndex,
-      play,
-      playList,
-      playNext,
-      hasNext,
-      playPrevious,
-      hasPrevious,
-      isPlaying,
-      isLooping,
-      isShuffling,
-      toggleLoop,
-      togglePlay,
-      toggleShuffle,
-      setPlayingState,
-      clearPlayerState
-    },
-    children: children
-  });
-}
-const usePlayer = () => {
-  return Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(PlayerContext);
-};
-
-/***/ }),
-
-/***/ "F5FC":
-/***/ (function(module, exports) {
-
-module.exports = require("react/jsx-runtime");
-
-/***/ }),
-
-/***/ "JhrQ":
-/***/ (function(module, exports) {
-
-module.exports = require("rc-slider");
-
-/***/ }),
-
-/***/ "JmTP":
-/***/ (function(module, exports) {
-
-// Exports
-module.exports = {
-	"headerContainer": "styles_headerContainer__3jyUX"
-};
-
-
-/***/ }),
-
-/***/ "MFIn":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return convertDurationToTimeString; });
-function convertDurationToTimeString(duration) {
-  const hours = Math.floor(duration / (60 * 60));
-  const minutes = Math.floor(duration % 3600 / 60);
-  const seconds = duration % 60;
-  const timeString = [hours, minutes, seconds].map(unit => String(unit).padStart(2, '0')).join(':');
-  return timeString;
-}
-
-/***/ }),
-
-/***/ "RvHN":
-/***/ (function(module, exports) {
-
-module.exports = require("date-fns/locale/pt-BR");
-
-/***/ }),
-
-/***/ "Skji":
-/***/ (function(module, exports) {
-
-module.exports = require("date-fns/format");
-
-/***/ }),
-
-/***/ "TpEK":
-/***/ (function(module, exports) {
-
-// Exports
-module.exports = {
-	"wrapper": "app_wrapper__X8llh"
-};
-
-
-/***/ }),
-
-/***/ "UlpK":
-/***/ (function(module, exports) {
-
-module.exports = require("next/dist/next-server/lib/head.js");
-
-/***/ }),
-
-/***/ "V+g0":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "cDcd":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ "dQHF":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__("AroE");
-
-exports.__esModule = true;
+__webpack_unused_export__ = true;
 exports.default = Image;
 
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__("98FW"));
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(6169));
 
-var _extends2 = _interopRequireDefault(__webpack_require__("1ccW"));
+var _extends2 = _interopRequireDefault(__webpack_require__(9566));
 
-var _react = _interopRequireDefault(__webpack_require__("cDcd"));
+var _react = _interopRequireDefault(__webpack_require__(9297));
 
-var _head = _interopRequireDefault(__webpack_require__("UlpK"));
+var _head = _interopRequireDefault(__webpack_require__(5273));
 
-var _toBase = __webpack_require__("7UUK");
+var _toBase = __webpack_require__(5519);
 
-var _imageConfig = __webpack_require__("ANQk");
+var _imageConfig = __webpack_require__(444);
 
-var _useIntersection = __webpack_require__("vNVm");
+var _useIntersection = __webpack_require__(5749);
 
 if (true) {
   ;
@@ -866,307 +434,39 @@ function defaultLoader({
 
 /***/ }),
 
-/***/ "hUgY":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 8391:
+/***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__("F5FC");
-
-// EXTERNAL MODULE: external "date-fns/format"
-var format_ = __webpack_require__("Skji");
-var format_default = /*#__PURE__*/__webpack_require__.n(format_);
-
-// EXTERNAL MODULE: external "date-fns/locale/pt-BR"
-var pt_BR_ = __webpack_require__("RvHN");
-var pt_BR_default = /*#__PURE__*/__webpack_require__.n(pt_BR_);
-
-// EXTERNAL MODULE: ./src/components/Header/styles.module.scss
-var styles_module = __webpack_require__("JmTP");
-var styles_module_default = /*#__PURE__*/__webpack_require__.n(styles_module);
-
-// CONCATENATED MODULE: ./src/components/Header/index.tsx
 
 
+exports.__esModule = true;
+exports.cancelIdleCallback = exports.requestIdleCallback = void 0;
 
-
-
-function Header() {
-  const currentDate = format_default()(new Date(), 'EEEEEE, d MMMM', {
-    locale: pt_BR_default.a
-  });
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("header", {
-    className: styles_module_default.a.headerContainer,
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-      src: "/logo.svg",
-      alt: "Podcastr"
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
-      children: "O melhor para voc\xEA ouvir, sempre"
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("span", {
-      children: currentDate
-    })]
-  });
-}
-// EXTERNAL MODULE: ./src/styles/global.scss
-var global = __webpack_require__("t+Ps");
-
-// EXTERNAL MODULE: ./src/styles/app.module.scss
-var app_module = __webpack_require__("TpEK");
-var app_module_default = /*#__PURE__*/__webpack_require__.n(app_module);
-
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__("Aiso");
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
-
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__("cDcd");
-
-// EXTERNAL MODULE: ./src/contexts/PlayerContext.tsx
-var PlayerContext = __webpack_require__("F3KW");
-
-// EXTERNAL MODULE: external "rc-slider"
-var external_rc_slider_ = __webpack_require__("JhrQ");
-var external_rc_slider_default = /*#__PURE__*/__webpack_require__.n(external_rc_slider_);
-
-// EXTERNAL MODULE: ./node_modules/rc-slider/assets/index.css
-var assets = __webpack_require__("V+g0");
-
-// EXTERNAL MODULE: ./src/components/Player/styles.module.scss
-var Player_styles_module = __webpack_require__("BLsd");
-var Player_styles_module_default = /*#__PURE__*/__webpack_require__.n(Player_styles_module);
-
-// EXTERNAL MODULE: ./src/utils/convertDurationToTimeString.ts
-var convertDurationToTimeString = __webpack_require__("MFIn");
-
-// CONCATENATED MODULE: ./src/components/Player/index.tsx
-
-
-
-
-
-
-
-
-
-function Player() {
-  var _episode$duration;
-
-  const audioRef = Object(external_react_["useRef"])(null);
-  const {
-    0: progress,
-    1: setProgress
-  } = Object(external_react_["useState"])(0);
-  const {
-    episodeList,
-    currentEpisodeIndex,
-    isPlaying,
-    isLooping,
-    isShuffling,
-    togglePlay,
-    toggleLoop,
-    toggleShuffle,
-    setPlayingState,
-    playNext,
-    playPrevious,
-    hasNext,
-    hasPrevious,
-    clearPlayerState
-  } = Object(PlayerContext["b" /* usePlayer */])();
-  Object(external_react_["useEffect"])(() => {
-    if (!audioRef.current) {
-      return;
-    }
-
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-  }, [isPlaying]);
-
-  function setupProgressListener() {
-    audioRef.current.currentTime = 0;
-    audioRef.current.addEventListener('timeupdate', () => {
-      setProgress(Math.floor(audioRef.current.currentTime));
+const requestIdleCallback = typeof self !== 'undefined' && self.requestIdleCallback || function (cb) {
+  let start = Date.now();
+  return setTimeout(function () {
+    cb({
+      didTimeout: false,
+      timeRemaining: function () {
+        return Math.max(0, 50 - (Date.now() - start));
+      }
     });
-  }
+  }, 1);
+};
 
-  function handleSeek(amount) {
-    audioRef.current.currentTime = amount;
-    setProgress(amount);
-  }
+exports.requestIdleCallback = requestIdleCallback;
 
-  function handleEpisodeEnded() {
-    if (hasNext) {
-      playNext();
-    } else {
-      clearPlayerState();
-    }
-  }
+const cancelIdleCallback = typeof self !== 'undefined' && self.cancelIdleCallback || function (id) {
+  return clearTimeout(id);
+};
 
-  const episode = episodeList[currentEpisodeIndex];
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-    className: Player_styles_module_default.a.playerContainer,
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])("header", {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-        src: "/playing.svg",
-        alt: "Tocando Agora"
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("strong", {
-        children: "Tocando agora"
-      })]
-    }), episode ? /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-      className: Player_styles_module_default.a.currentEpisode,
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
-        width: 592,
-        height: 592,
-        src: episode.thumbnail,
-        objectFit: "cover"
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("strong", {
-        children: episode.title
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("span", {
-        children: episode.members
-      })]
-    }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      className: Player_styles_module_default.a.emptyPlayer,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("strong", {
-        children: "Selecione um podcast para ouvir"
-      })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("footer", {
-      className: !episode ? Player_styles_module_default.a.empty : '',
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-        className: Player_styles_module_default.a.progress,
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("span", {
-          children: Object(convertDurationToTimeString["a" /* convertDurationToTimeString */])(progress)
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-          className: Player_styles_module_default.a.slider,
-          children: episode ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_rc_slider_default.a, {
-            max: episode.duration,
-            value: progress,
-            onChange: handleSeek,
-            trackStyle: {
-              backgroundColor: '#04d361'
-            },
-            railStyle: {
-              backgroundColor: '#9f57ff'
-            },
-            handleStyle: {
-              borderColor: '#04d361',
-              borderWidth: 4
-            }
-          }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-            className: Player_styles_module_default.a.emptySlider
-          })
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("span", {
-          children: Object(convertDurationToTimeString["a" /* convertDurationToTimeString */])((_episode$duration = episode === null || episode === void 0 ? void 0 : episode.duration) !== null && _episode$duration !== void 0 ? _episode$duration : 0)
-        })]
-      }), episode && /*#__PURE__*/Object(jsx_runtime_["jsx"])("audio", {
-        src: episode.url,
-        ref: audioRef,
-        loop: isLooping,
-        autoPlay: true,
-        onLoadedMetadata: setupProgressListener,
-        onPlay: () => setPlayingState(true),
-        onPause: () => setPlayingState(false),
-        onEnded: handleEpisodeEnded
-      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-        className: Player_styles_module_default.a.buttons,
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("button", {
-          type: "button",
-          disabled: !episode || episodeList.length === 1,
-          onClick: toggleShuffle,
-          className: isShuffling ? Player_styles_module_default.a.isActive : '',
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-            src: "/shuffle.svg",
-            alt: "Embaralhar"
-          })
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("button", {
-          type: "button",
-          disabled: !episode || !hasPrevious,
-          onClick: playPrevious,
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-            src: "/play-previous.svg",
-            alt: "Tocar anterior"
-          })
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("button", {
-          type: "button",
-          disabled: !episode,
-          className: Player_styles_module_default.a.playButton,
-          onClick: togglePlay,
-          children: isPlaying ? /*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-            src: "/pause.svg",
-            alt: "Pausar"
-          }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-            src: "/play.svg",
-            alt: "Tocar"
-          })
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("button", {
-          type: "button",
-          disabled: !episode || !hasNext,
-          onClick: playNext,
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-            src: "/play-next.svg",
-            alt: "Tocar pr\xF3xima"
-          })
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("button", {
-          type: "button",
-          disabled: !episode,
-          onClick: toggleLoop,
-          className: isLooping ? Player_styles_module_default.a.isActive : '',
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("img", {
-            src: "/repeat.svg",
-            alt: "Repetir"
-          })
-        })]
-      })]
-    })]
-  });
-}
-// CONCATENATED MODULE: ./src/pages/_app.tsx
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-function MyApp({
-  Component,
-  pageProps
-}) {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(PlayerContext["a" /* PlayerContextProvider */], {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-      className: app_module_default.a.wrapper,
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])("main", {
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Header, {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Component, _objectSpread({}, pageProps))]
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Player, {})]
-    })
-  });
-}
-
-/* harmony default export */ var _app = __webpack_exports__["default"] = (MyApp);
+exports.cancelIdleCallback = cancelIdleCallback;
 
 /***/ }),
 
-/***/ "t+Ps":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "vNVm":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 5749:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1174,9 +474,9 @@ function MyApp({
 exports.__esModule = true;
 exports.useIntersection = useIntersection;
 
-var _react = __webpack_require__("cDcd");
+var _react = __webpack_require__(9297);
 
-var _requestIdleCallback = __webpack_require__("0G5g");
+var _requestIdleCallback = __webpack_require__(8391);
 
 const hasIntersectionObserver = typeof IntersectionObserver !== 'undefined';
 
@@ -1260,6 +560,589 @@ function createObserver(options) {
   return instance;
 }
 
+/***/ }),
+
+/***/ 1983:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "QM": function() { return /* binding */ PlayerContextProvider; },
+/* harmony export */   "nn": function() { return /* binding */ usePlayer; }
+/* harmony export */ });
+/* unused harmony export PlayerContext */
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5282);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9297);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const PlayerContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({});
+function PlayerContextProvider({
+  children
+}) {
+  const {
+    0: episodeList,
+    1: setEpisodeList
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  const {
+    0: currentEpisodeIndex,
+    1: setCurrentEpisodeIndex
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const {
+    0: isPlaying,
+    1: setIsPlaying
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const {
+    0: isLooping,
+    1: setIsLooping
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const {
+    0: isShuffling,
+    1: setIsShuffling
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+
+  function play(episode) {
+    setEpisodeList([episode]);
+    setCurrentEpisodeIndex(0);
+    setIsPlaying(true);
+  }
+
+  function playList(list, index) {
+    setEpisodeList(list);
+    setCurrentEpisodeIndex(index);
+    setIsPlaying(true);
+  }
+
+  const hasPrevious = currentEpisodeIndex > 0;
+  const hasNext = isShuffling || currentEpisodeIndex + 1 < episodeList.length;
+
+  function playNext() {
+    if (isShuffling) {
+      const nextRendomEpisodeIndex = Math.floor(Math.random() * episodeList.length);
+      setCurrentEpisodeIndex(nextRendomEpisodeIndex);
+    } else if (hasNext) {
+      setCurrentEpisodeIndex(currentEpisodeIndex + 1);
+    }
+  }
+
+  function playPrevious() {
+    if (hasPrevious) {
+      setCurrentEpisodeIndex(currentEpisodeIndex - 1);
+    }
+  }
+
+  function togglePlay() {
+    setIsPlaying(!isPlaying);
+  }
+
+  function toggleLoop() {
+    setIsLooping(!isLooping);
+  }
+
+  function toggleShuffle() {
+    setIsShuffling(!isShuffling);
+  }
+
+  function setPlayingState(state) {
+    setIsPlaying(state);
+  }
+
+  function clearPlayerState() {
+    setEpisodeList([]);
+    setCurrentEpisodeIndex(0);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PlayerContext.Provider, {
+    value: {
+      episodeList,
+      currentEpisodeIndex,
+      play,
+      playList,
+      playNext,
+      hasNext,
+      playPrevious,
+      hasPrevious,
+      isPlaying,
+      isLooping,
+      isShuffling,
+      toggleLoop,
+      togglePlay,
+      toggleShuffle,
+      setPlayingState,
+      clearPlayerState
+    },
+    children: children
+  });
+}
+const usePlayer = () => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(PlayerContext);
+};
+
+/***/ }),
+
+/***/ 1240:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": function() { return /* binding */ _app; }
+});
+
+// EXTERNAL MODULE: external "react/jsx-runtime"
+var jsx_runtime_ = __webpack_require__(5282);
+;// CONCATENATED MODULE: external "date-fns/format"
+var format_namespaceObject = require("date-fns/format");;
+var format_default = /*#__PURE__*/__webpack_require__.n(format_namespaceObject);
+// EXTERNAL MODULE: external "date-fns/locale/pt-BR"
+var pt_BR_ = __webpack_require__(5639);
+var pt_BR_default = /*#__PURE__*/__webpack_require__.n(pt_BR_);
+// EXTERNAL MODULE: ./src/components/Header/styles.module.scss
+var styles_module = __webpack_require__(3372);
+var styles_module_default = /*#__PURE__*/__webpack_require__.n(styles_module);
+;// CONCATENATED MODULE: ./src/components/Header/index.tsx
+
+
+
+
+
+function Header() {
+  const currentDate = format_default()(new Date(), 'EEEEEE, d MMMM', {
+    locale: (pt_BR_default())
+  });
+  return /*#__PURE__*/(0,jsx_runtime_.jsxs)("header", {
+    className: (styles_module_default()).headerContainer,
+    children: [/*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+      src: "/logo.svg",
+      alt: "Podcastr"
+    }), /*#__PURE__*/(0,jsx_runtime_.jsx)("p", {
+      children: "O melhor para voc\xEA ouvir, sempre"
+    }), /*#__PURE__*/(0,jsx_runtime_.jsx)("span", {
+      children: currentDate
+    })]
+  });
+}
+// EXTERNAL MODULE: ./src/styles/app.module.scss
+var app_module = __webpack_require__(4811);
+var app_module_default = /*#__PURE__*/__webpack_require__.n(app_module);
+// EXTERNAL MODULE: ./node_modules/next/image.js
+var next_image = __webpack_require__(5675);
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(9297);
+// EXTERNAL MODULE: ./src/contexts/PlayerContext.tsx
+var PlayerContext = __webpack_require__(1983);
+;// CONCATENATED MODULE: external "rc-slider"
+var external_rc_slider_namespaceObject = require("rc-slider");;
+var external_rc_slider_default = /*#__PURE__*/__webpack_require__.n(external_rc_slider_namespaceObject);
+// EXTERNAL MODULE: ./src/components/Player/styles.module.scss
+var Player_styles_module = __webpack_require__(5638);
+var Player_styles_module_default = /*#__PURE__*/__webpack_require__.n(Player_styles_module);
+// EXTERNAL MODULE: ./src/utils/convertDurationToTimeString.ts
+var convertDurationToTimeString = __webpack_require__(4005);
+;// CONCATENATED MODULE: ./src/components/Player/index.tsx
+
+
+
+
+
+
+
+
+
+function Player() {
+  var _episode$duration;
+
+  const audioRef = (0,external_react_.useRef)(null);
+  const {
+    0: progress,
+    1: setProgress
+  } = (0,external_react_.useState)(0);
+  const {
+    episodeList,
+    currentEpisodeIndex,
+    isPlaying,
+    isLooping,
+    isShuffling,
+    togglePlay,
+    toggleLoop,
+    toggleShuffle,
+    setPlayingState,
+    playNext,
+    playPrevious,
+    hasNext,
+    hasPrevious,
+    clearPlayerState
+  } = (0,PlayerContext/* usePlayer */.nn)();
+  (0,external_react_.useEffect)(() => {
+    if (!audioRef.current) {
+      return;
+    }
+
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  function setupProgressListener() {
+    audioRef.current.currentTime = 0;
+    audioRef.current.addEventListener('timeupdate', () => {
+      setProgress(Math.floor(audioRef.current.currentTime));
+    });
+  }
+
+  function handleSeek(amount) {
+    audioRef.current.currentTime = amount;
+    setProgress(amount);
+  }
+
+  function handleEpisodeEnded() {
+    if (hasNext) {
+      playNext();
+    } else {
+      clearPlayerState();
+    }
+  }
+
+  const episode = episodeList[currentEpisodeIndex];
+  return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+    className: (Player_styles_module_default()).playerContainer,
+    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("header", {
+      children: [/*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+        src: "/playing.svg",
+        alt: "Tocando Agora"
+      }), /*#__PURE__*/(0,jsx_runtime_.jsx)("strong", {
+        children: "Tocando agora"
+      })]
+    }), episode ? /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+      className: (Player_styles_module_default()).currentEpisode,
+      children: [/*#__PURE__*/(0,jsx_runtime_.jsx)(next_image.default, {
+        width: 592,
+        height: 592,
+        src: episode.thumbnail,
+        objectFit: "cover"
+      }), /*#__PURE__*/(0,jsx_runtime_.jsx)("strong", {
+        children: episode.title
+      }), /*#__PURE__*/(0,jsx_runtime_.jsx)("span", {
+        children: episode.members
+      })]
+    }) : /*#__PURE__*/(0,jsx_runtime_.jsx)("div", {
+      className: (Player_styles_module_default()).emptyPlayer,
+      children: /*#__PURE__*/(0,jsx_runtime_.jsx)("strong", {
+        children: "Selecione um podcast para ouvir"
+      })
+    }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("footer", {
+      className: !episode ? (Player_styles_module_default()).empty : '',
+      children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+        className: (Player_styles_module_default()).progress,
+        children: [/*#__PURE__*/(0,jsx_runtime_.jsx)("span", {
+          children: (0,convertDurationToTimeString/* convertDurationToTimeString */.D)(progress)
+        }), /*#__PURE__*/(0,jsx_runtime_.jsx)("div", {
+          className: (Player_styles_module_default()).slider,
+          children: episode ? /*#__PURE__*/(0,jsx_runtime_.jsx)((external_rc_slider_default()), {
+            max: episode.duration,
+            value: progress,
+            onChange: handleSeek,
+            trackStyle: {
+              backgroundColor: '#04d361'
+            },
+            railStyle: {
+              backgroundColor: '#9f57ff'
+            },
+            handleStyle: {
+              borderColor: '#04d361',
+              borderWidth: 4
+            }
+          }) : /*#__PURE__*/(0,jsx_runtime_.jsx)("div", {
+            className: (Player_styles_module_default()).emptySlider
+          })
+        }), /*#__PURE__*/(0,jsx_runtime_.jsx)("span", {
+          children: (0,convertDurationToTimeString/* convertDurationToTimeString */.D)((_episode$duration = episode === null || episode === void 0 ? void 0 : episode.duration) !== null && _episode$duration !== void 0 ? _episode$duration : 0)
+        })]
+      }), episode && /*#__PURE__*/(0,jsx_runtime_.jsx)("audio", {
+        src: episode.url,
+        ref: audioRef,
+        loop: isLooping,
+        autoPlay: true,
+        onLoadedMetadata: setupProgressListener,
+        onPlay: () => setPlayingState(true),
+        onPause: () => setPlayingState(false),
+        onEnded: handleEpisodeEnded
+      }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+        className: (Player_styles_module_default()).buttons,
+        children: [/*#__PURE__*/(0,jsx_runtime_.jsx)("button", {
+          type: "button",
+          disabled: !episode || episodeList.length === 1,
+          onClick: toggleShuffle,
+          className: isShuffling ? (Player_styles_module_default()).isActive : '',
+          children: /*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+            src: "/shuffle.svg",
+            alt: "Embaralhar"
+          })
+        }), /*#__PURE__*/(0,jsx_runtime_.jsx)("button", {
+          type: "button",
+          disabled: !episode || !hasPrevious,
+          onClick: playPrevious,
+          children: /*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+            src: "/play-previous.svg",
+            alt: "Tocar anterior"
+          })
+        }), /*#__PURE__*/(0,jsx_runtime_.jsx)("button", {
+          type: "button",
+          disabled: !episode,
+          className: (Player_styles_module_default()).playButton,
+          onClick: togglePlay,
+          children: isPlaying ? /*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+            src: "/pause.svg",
+            alt: "Pausar"
+          }) : /*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+            src: "/play.svg",
+            alt: "Tocar"
+          })
+        }), /*#__PURE__*/(0,jsx_runtime_.jsx)("button", {
+          type: "button",
+          disabled: !episode || !hasNext,
+          onClick: playNext,
+          children: /*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+            src: "/play-next.svg",
+            alt: "Tocar pr\xF3xima"
+          })
+        }), /*#__PURE__*/(0,jsx_runtime_.jsx)("button", {
+          type: "button",
+          disabled: !episode,
+          onClick: toggleLoop,
+          className: isLooping ? (Player_styles_module_default()).isActive : '',
+          children: /*#__PURE__*/(0,jsx_runtime_.jsx)("img", {
+            src: "/repeat.svg",
+            alt: "Repetir"
+          })
+        })]
+      })]
+    })]
+  });
+}
+;// CONCATENATED MODULE: ./src/pages/_app.tsx
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+function MyApp({
+  Component,
+  pageProps
+}) {
+  return /*#__PURE__*/(0,jsx_runtime_.jsx)(PlayerContext/* PlayerContextProvider */.QM, {
+    children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+      className: (app_module_default()).wrapper,
+      children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("main", {
+        children: [/*#__PURE__*/(0,jsx_runtime_.jsx)(Header, {}), /*#__PURE__*/(0,jsx_runtime_.jsx)(Component, _objectSpread({}, pageProps))]
+      }), /*#__PURE__*/(0,jsx_runtime_.jsx)(Player, {})]
+    })
+  });
+}
+
+/* harmony default export */ var _app = (MyApp);
+
+/***/ }),
+
+/***/ 4005:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "D": function() { return /* binding */ convertDurationToTimeString; }
+/* harmony export */ });
+function convertDurationToTimeString(duration) {
+  const hours = Math.floor(duration / (60 * 60));
+  const minutes = Math.floor(duration % 3600 / 60);
+  const seconds = duration % 60;
+  const timeString = [hours, minutes, seconds].map(unit => String(unit).padStart(2, '0')).join(':');
+  return timeString;
+}
+
+/***/ }),
+
+/***/ 3372:
+/***/ (function(module) {
+
+// Exports
+module.exports = {
+	"headerContainer": "styles_headerContainer__3jyUX"
+};
+
+
+/***/ }),
+
+/***/ 5638:
+/***/ (function(module) {
+
+// Exports
+module.exports = {
+	"playerContainer": "styles_playerContainer__2kTpC",
+	"empty": "styles_empty__XvMyC",
+	"progress": "styles_progress__ULW9V",
+	"currentEpisode": "styles_currentEpisode__3Qmiu",
+	"emptyPlayer": "styles_emptyPlayer__WHPi6",
+	"slider": "styles_slider__3_Mkb",
+	"emptySlider": "styles_emptySlider__3p9Ad",
+	"buttons": "styles_buttons__i4fo8",
+	"isActive": "styles_isActive__PGy6l",
+	"playButton": "styles_playButton__fmvI6"
+};
+
+
+/***/ }),
+
+/***/ 4811:
+/***/ (function(module) {
+
+// Exports
+module.exports = {
+	"wrapper": "app_wrapper__X8llh"
+};
+
+
+/***/ }),
+
+/***/ 5675:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(6255)
+
+
+/***/ }),
+
+/***/ 9566:
+/***/ (function(module) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+
+/***/ }),
+
+/***/ 2426:
+/***/ (function(module) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ 6169:
+/***/ (function(module) {
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutPropertiesLoose;
+
+/***/ }),
+
+/***/ 5639:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("date-fns/locale/pt-BR");;
+
+/***/ }),
+
+/***/ 5273:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("next/dist/next-server/lib/head.js");;
+
+/***/ }),
+
+/***/ 5519:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("next/dist/next-server/lib/to-base-64.js");;
+
+/***/ }),
+
+/***/ 444:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("next/dist/next-server/server/image-config.js");;
+
+/***/ }),
+
+/***/ 9297:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("react");;
+
+/***/ }),
+
+/***/ 5282:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("react/jsx-runtime");;
+
 /***/ })
 
-/******/ });
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../webpack-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+var __webpack_exports__ = (__webpack_exec__(1240));
+module.exports = __webpack_exports__;
+
+})();
