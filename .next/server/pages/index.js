@@ -3269,8 +3269,7 @@ const getStaticProps = async () => {
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "h": function() { return /* binding */ api; },
-  "Z": function() { return /* binding */ services_api; }
+  "Z": function() { return /* binding */ api; }
 });
 
 ;// CONCATENATED MODULE: external "axios"
@@ -3278,9 +3277,6 @@ var external_axios_namespaceObject = require("axios");;
 var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_namespaceObject);
 ;// CONCATENATED MODULE: ./src/services/api.ts
 
-const api = external_axios_default().create({
-  baseURL: 'http://localhost:3333/'
-});
 const baseUrl = 'https://60927fe985ff510017212f35.mockapi.io/api/v1/';
 
 class PodcastrServices {
@@ -3294,9 +3290,19 @@ class PodcastrServices {
     });
   }
 
+  static getEpisodesById(id) {
+    return external_axios_default().get(`${baseUrl}/episodes/${id}`).then(response => {
+      console.log('teste', response.data);
+      return response.data;
+    }).catch(error => {
+      // handle error
+      console.log(error);
+    });
+  }
+
 }
 
-/* harmony default export */ var services_api = (PodcastrServices);
+/* harmony default export */ var api = (PodcastrServices);
 
 /***/ }),
 

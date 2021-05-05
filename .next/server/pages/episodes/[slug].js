@@ -3150,14 +3150,18 @@ function Episode({
   });
 }
 const getStaticPaths = async () => {
-  const {
-    data
-  } = await _services_api__WEBPACK_IMPORTED_MODULE_6__/* .api.get */ .h.get('/episodes', {
-    params: {
-      _limit: 2,
-      _sort: 'published_at',
-      _order: 'desc'
-    }
+  // const { data } = await api.get('/episodes', {
+  //   params: {
+  //     _limit: 2,
+  //     _sort: 'published_at',
+  //     _order: 'desc'
+  //   }
+  // });
+  let data;
+  await _services_api__WEBPACK_IMPORTED_MODULE_6__/* .default.getEpisodes */ .Z.getEpisodes().then(res => {
+    data = res;
+  }).catch(error => {
+    return error;
   });
   const paths = data.map(episode => {
     return {
@@ -3174,10 +3178,14 @@ const getStaticPaths = async () => {
 const getStaticProps = async ctx => {
   const {
     slug
-  } = ctx.params;
-  const {
-    data
-  } = await _services_api__WEBPACK_IMPORTED_MODULE_6__/* .api.get */ .h.get(`/episodes/${slug}`);
+  } = ctx.params; // const { data } = await api.get(`/episodes/${slug}`)
+
+  let data;
+  await _services_api__WEBPACK_IMPORTED_MODULE_6__/* .default.getEpisodesById */ .Z.getEpisodesById(slug).then(res => {
+    data = res;
+  }).catch(error => {
+    return error;
+  });
   const episode = {
     id: data.id,
     title: data.title,
@@ -3209,8 +3217,7 @@ const getStaticProps = async ctx => {
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "h": function() { return /* binding */ api; },
-  "Z": function() { return /* binding */ services_api; }
+  "Z": function() { return /* binding */ api; }
 });
 
 ;// CONCATENATED MODULE: external "axios"
@@ -3218,9 +3225,6 @@ var external_axios_namespaceObject = require("axios");;
 var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_namespaceObject);
 ;// CONCATENATED MODULE: ./src/services/api.ts
 
-const api = external_axios_default().create({
-  baseURL: 'http://localhost:3333/'
-});
 const baseUrl = 'https://60927fe985ff510017212f35.mockapi.io/api/v1/';
 
 class PodcastrServices {
@@ -3234,9 +3238,19 @@ class PodcastrServices {
     });
   }
 
+  static getEpisodesById(id) {
+    return external_axios_default().get(`${baseUrl}/episodes/${id}`).then(response => {
+      console.log('teste', response.data);
+      return response.data;
+    }).catch(error => {
+      // handle error
+      console.log(error);
+    });
+  }
+
 }
 
-/* harmony default export */ var services_api = (PodcastrServices);
+/* harmony default export */ var api = (PodcastrServices);
 
 /***/ }),
 
