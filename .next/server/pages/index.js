@@ -3080,9 +3080,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns_locale_pt_BR__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(date_fns_locale_pt_BR__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(1224);
 /* harmony import */ var _contexts_PlayerContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(1983);
-/* harmony import */ var _utils_convertDurationToTimeString__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(4005);
-/* harmony import */ var _home_module_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(6545);
-/* harmony import */ var _home_module_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_home_module_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _utils_convertDurationToTimeString__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(4005);
+/* harmony import */ var _home_module_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(6545);
+/* harmony import */ var _home_module_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_home_module_scss__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9297);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -3102,14 +3105,21 @@ function Home({
     playList
   } = (0,_contexts_PlayerContext__WEBPACK_IMPORTED_MODULE_7__/* .usePlayer */ .nn)();
   const episodeList = [...latestEpisodes, ...allEpisodes];
+  (0,react__WEBPACK_IMPORTED_MODULE_8__.useEffect)(() => {
+    _services_api__WEBPACK_IMPORTED_MODULE_6__/* .default.getEpisodes */ .Z.getEpisodes().then(res => {
+      console.log('res', res);
+    }).catch(error => {
+      return error;
+    });
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_8___default().homepage),
+    className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_9___default().homepage),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((next_head__WEBPACK_IMPORTED_MODULE_2___default()), {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("title", {
         children: "Home | Podcastr"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
-      className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_8___default().latestEpisodes),
+      className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_9___default().latestEpisodes),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
         children: "\xDAltimos Lan\xE7amentos"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", {
@@ -3122,7 +3132,7 @@ function Home({
               alt: episode.title,
               objectFit: "cover"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_8___default().episodeDetails),
+              className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_9___default().episodeDetails),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(next_link__WEBPACK_IMPORTED_MODULE_3__.default, {
                 href: `/episodes/${episode.id}`,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
@@ -3147,7 +3157,7 @@ function Home({
         })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
-      className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_8___default().allEpisodes),
+      className: (_home_module_scss__WEBPACK_IMPORTED_MODULE_9___default().allEpisodes),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
         children: " Todos epis\xF3dios"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("table", {
@@ -3212,14 +3222,18 @@ function Home({
   });
 }
 const getStaticProps = async () => {
-  const {
-    data
-  } = await _services_api__WEBPACK_IMPORTED_MODULE_6__/* .api.get */ .h.get('episodes', {
-    params: {
-      _limit: 12,
-      _sort: 'published_at',
-      _order: 'desc'
-    }
+  // const { data } = await api.get('episodes', {
+  //   params: {
+  //     _limit: 12,
+  //     _sort: 'published_at',
+  //     _order: 'desc',
+  //   }
+  // });
+  let data;
+  await _services_api__WEBPACK_IMPORTED_MODULE_6__/* .default.getEpisodes */ .Z.getEpisodes().then(res => {
+    data = res;
+  }).catch(error => {
+    return error;
   });
   const episodes = data.map(episode => {
     return {
@@ -3231,7 +3245,7 @@ const getStaticProps = async () => {
         locale: (date_fns_locale_pt_BR__WEBPACK_IMPORTED_MODULE_5___default())
       }),
       duration: Number(episode.file.duration),
-      durationAsString: (0,_utils_convertDurationToTimeString__WEBPACK_IMPORTED_MODULE_9__/* .convertDurationToTimeString */ .D)(Number(episode.file.duration)),
+      durationAsString: (0,_utils_convertDurationToTimeString__WEBPACK_IMPORTED_MODULE_10__/* .convertDurationToTimeString */ .D)(Number(episode.file.duration)),
       url: episode.file.url
     };
   });
@@ -3255,7 +3269,8 @@ const getStaticProps = async () => {
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "h": function() { return /* binding */ api; }
+  "h": function() { return /* binding */ api; },
+  "Z": function() { return /* binding */ services_api; }
 });
 
 ;// CONCATENATED MODULE: external "axios"
@@ -3266,6 +3281,22 @@ var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_n
 const api = external_axios_default().create({
   baseURL: 'http://localhost:3333/'
 });
+const baseUrl = 'https://60927fe985ff510017212f35.mockapi.io/api/v1/';
+
+class PodcastrServices {
+  static getEpisodes() {
+    return external_axios_default().get(`${baseUrl}/episodes`).then(response => {
+      console.log('teste', response.data);
+      return response.data;
+    }).catch(error => {
+      // handle error
+      console.log(error);
+    });
+  }
+
+}
+
+/* harmony default export */ var services_api = (PodcastrServices);
 
 /***/ }),
 

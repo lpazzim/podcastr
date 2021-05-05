@@ -3209,7 +3209,8 @@ const getStaticProps = async ctx => {
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "h": function() { return /* binding */ api; }
+  "h": function() { return /* binding */ api; },
+  "Z": function() { return /* binding */ services_api; }
 });
 
 ;// CONCATENATED MODULE: external "axios"
@@ -3220,6 +3221,22 @@ var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_n
 const api = external_axios_default().create({
   baseURL: 'http://localhost:3333/'
 });
+const baseUrl = 'https://60927fe985ff510017212f35.mockapi.io/api/v1/';
+
+class PodcastrServices {
+  static getEpisodes() {
+    return external_axios_default().get(`${baseUrl}/episodes`).then(response => {
+      console.log('teste', response.data);
+      return response.data;
+    }).catch(error => {
+      // handle error
+      console.log(error);
+    });
+  }
+
+}
+
+/* harmony default export */ var services_api = (PodcastrServices);
 
 /***/ }),
 

@@ -6,10 +6,12 @@ import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
 import { api } from '../services/api';
+import PodcastrServices from '../services/api';
 import { usePlayer } from '../contexts/PlayerContext';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 
 import styles from './home.module.scss';
+import { useEffect } from 'react';
 
 type Episode = {
   id: string;
@@ -28,9 +30,22 @@ type HomeProps = {
   allEpisodes: Episode[];
 }
 
+
+
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
   const { playList } = usePlayer();
   const episodeList = [...latestEpisodes, ...allEpisodes];
+
+
+  useEffect(() => {
+    PodcastrServices.getEpisodes().then((res) => {
+      console.log('res', res);
+    })
+      .catch((error) => {
+        return error;
+      });
+
+  }, []);
 
   return (
     <div className={styles.homepage}>
@@ -119,13 +134,21 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get('episodes', {
-    params: {
-      _limit: 12,
-      _sort: 'published_at',
-      _order: 'desc',
-    }
-  });
+  // const { data } = await api.get('episodes', {
+  //   params: {
+  //     _limit: 12,
+  //     _sort: 'published_at',
+  //     _order: 'desc',
+  //   }
+  // });
+  let data;
+
+  await PodcastrServices.getEpisodes().then((res) => {
+     data = res; 
+  })
+    .catch((error) => {
+      return error;
+    });
 
   const episodes = data.map(episode => {
     return {
