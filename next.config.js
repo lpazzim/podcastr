@@ -6,6 +6,7 @@ const optimizedImages = require('next-optimized-images');
 // ]);
 
 module.exports ={
+  basePath: '',
   images:{
     domains: ['storage.googleapis.com']
   },
