@@ -6,8 +6,7 @@ class PodcastrServices {
   static getEpisodes() {
     return axios
       .get(`${baseUrl}/episodes`)
-      .then((response) => {
-        console.log('teste',response.data);
+      .then((response) => {        
         return response.data;
       })
       .catch((error) => {
@@ -20,7 +19,6 @@ class PodcastrServices {
     return axios
       .get(`${baseUrl}/episodes/${id}`)
       .then((response) => {
-        console.log('teste',response.data);
         return response.data;
       })
       .catch((error) => {

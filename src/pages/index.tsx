@@ -37,12 +37,10 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
   useEffect(() => {
     PodcastrServices.getEpisodes().then((res) => {
-      console.log('res', res);
     })
       .catch((error) => {
         return error;
       });
-
   }, []);
 
   return (
