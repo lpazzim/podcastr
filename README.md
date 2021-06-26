@@ -11,13 +11,10 @@
 
 ### Languages
 <p align="left">
-  <a
-    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-    target="_blank"
-  >
+<a href="https://www.typescriptlang.org" target="_blank">
     <img
-      src="https://cdn.worldvectorlogo.com/logos/logo-javascript.svg"
-      alt="javascript"
+      src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg"
+      alt="typescript"
       width="40"
       height="40"
     />
